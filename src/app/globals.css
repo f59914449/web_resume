@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
+/* Theme tokens */
 :root {
+  --background: #0A192F; /* Dark blue primary */
+  --foreground: #e6edf3; /* Light text */
+  --accent: #FF6B35;     /* Neon orange accent */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+.light {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0A192F;
+  --accent: #FF6B35;
+  --glass-bg: rgba(10, 25, 47, 0.06);
+  --glass-border: rgba(10, 25, 47, 0.12);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-poppins);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
+/* Global base */
+html, body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utility: glassmorphism card */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Accent underline */
+.accent-underline {
+  position: relative;
+}
+.accent-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 40%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 9999px;
 }
