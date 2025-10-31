@@ -15,7 +15,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Sopheakdey Chen · Full-Stack Engineer",
+  title: "Chen Sopheakdey · Full-Stack Engineer",
   description:
     "Cutting-edge 2025 portfolio with Next.js, animations, PWA, and backend APIs.",
 };

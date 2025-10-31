@@ -53,3 +53,33 @@ html, body {
   background: var(--accent);
   border-radius: 9999px;
 }
+
+/* Print-optimized styles for /resume */
+@media print {
+  :root {
+    color-scheme: light; /* force light for printing readability */
+  }
+  html, body {
+    background: #ffffff !important;
+    color: #000 !important;
+  }
+  header, footer {
+    display: none !important;
+  }
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  .resume-grid {
+    display: block !important; /* single column for print */
+  }
+  .pdf-frame {
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    color: #555;
+  }
+}

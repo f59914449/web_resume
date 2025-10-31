@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ImageLightbox from "../../components/ImageLightbox";
 import ThemeToggle from "../../components/ThemeToggle";
 
 // A dedicated Resume page that presents a professional two‑column layout:
@@ -14,7 +15,7 @@ export default function ResumePage() {
     <div className="min-h-screen font-sans">
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-4">
-        <div className="font-display text-xl font-semibold">SC</div>
+        <div className="font-display text-xl font-semibold">Pro PK</div>
         <div className="flex items-center gap-4">
           <a
             href="/"
@@ -29,7 +30,7 @@ export default function ResumePage() {
       {/* Main layout */}
       <main className="max-w-6xl mx-auto px-6 pb-12">
         <h1 className="text-2xl md:text-3xl font-semibold mb-6">Resume</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="resume-grid grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Photo showcase */}
           <section aria-label="Photo" className="rounded-xl border bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 shadow-sm overflow-hidden">
             <div className="p-4 md:p-6">
@@ -38,29 +39,34 @@ export default function ResumePage() {
                 This portrait is used across your portfolio and resume. For best results,
                 provide a high‑resolution image in web/public/photos/ (e.g., profile-1.jpg).
               </p>
-              <div className="relative aspect-[4/5] w-full rounded-lg overflow-hidden">
-                {/* If the photo is not present yet, Next/Image will show a broken image icon.
-                   That's acceptable during setup; replace src below with your actual file name.
-                 */}
-                <Image
+              <figure>
+                <ImageLightbox
                   src="/photo_2025-10-31%2012.07.38.jpeg"
-                  alt="Portrait photo (Oct 31, 2025)"
+                  alt="Portrait photo"
                   fill
                   className="object-cover"
                   priority
                   quality={95}
+                  containerClassName="aspect-[4/5] w-full rounded-lg overflow-hidden"
                 />
-              </div>
+                <figcaption className="mt-2 text-xs opacity-70">
+                  Portrait — neutral background, soft lighting. Click image to view larger.
+                </figcaption>
+              </figure>
               <div className="mt-4 grid grid-cols-2 gap-3">
-                <div className="relative aspect-square rounded-md overflow-hidden">
-                  <Image
+                <figure>
+                  <ImageLightbox
                     src="/dji_mimo_20250413_124142_0_1744526982036_photo.jpg"
-                    alt="Secondary portrait (DJI Mimo)"
+                    alt="Secondary portrait"
                     fill
                     className="object-cover"
                     quality={95}
+                    containerClassName="aspect-square rounded-md overflow-hidden"
                   />
-                </div>
+                  <figcaption className="mt-2 text-xs opacity-70">
+                    Secondary portrait — outdoor shot. Click to view larger.
+                  </figcaption>
+                </figure>
                 <div className="rounded-md border p-3 text-xs opacity-80">
                   Tips for a professional look:
                   <ul className="list-disc ml-4 mt-2 space-y-1">
@@ -96,7 +102,7 @@ export default function ResumePage() {
               </div>
             </div>
             {/* Embedded PDF: leverage the browser's native high‑quality renderer for crisp text */}
-            <div className="h-[70vh] md:h-[76vh]">
+            <div className="pdf-frame h-[70vh] md:h-[76vh]">
               <object data={CV_URL} type="application/pdf" className="w-full h-full">
                 <p className="p-4 text-sm">
                   Your browser can’t display the PDF inline. You can

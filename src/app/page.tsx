@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-screen font-sans">
       <header className="flex items-center justify-between px-6 py-4">
-        <div className="font-display text-xl font-semibold">SC</div>
+        <div className="font-display text-xl font-semibold">Pro PK</div>
         <div className="flex items-center gap-4">
           <a href="/resume" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
             Resume
