@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import BackgroundAnimation from "../components/BackgroundAnimation";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,10 +25,18 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} antialiased bg-background text-foreground`}> 
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={`${inter.variable} ${poppins.variable} antialiased bg-background text-foreground`}>
+        {/* Global background animation (respects prefers-reduced-motion) */}
+        <div id="background-animation-root" aria-hidden="true">
+          {/* Slightly reduced intensity to keep content readable */}
+          <BackgroundAnimation speed={1.0} intensity={0.4} />
+        </div>
+        {/* Contrast scrim layered above background to ensure WCAG readability */}
+        <div className="content-scrim" aria-hidden="true" />
+        {/* Ensure content sits above the background canvas */}
+        <div className="relative z-10">
           {children}
-        </ThemeProvider>
+        </div>
       </body>
     </html>
   );

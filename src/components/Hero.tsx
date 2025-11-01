@@ -11,10 +11,12 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         className="font-display text-4xl sm:text-5xl font-bold"
       >
-        <span className="accent-underline">Sopheakdey Chen</span>
+        <span className="accent-underline">Chen Sopheakdey</span>
       </motion.h1>
       <TypeAnimation
         sequence={[
+          "ជិន សុភក្តី",
+          1200, 
           "Full‑stack Engineer",
           1200,
           "Next.js + Node.js + MongoDB",

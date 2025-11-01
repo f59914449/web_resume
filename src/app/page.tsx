@@ -1,9 +1,9 @@
-import ThemeToggle from "../components/ThemeToggle";
 import Hero from "../components/Hero";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import LiveCodeSection from "../components/LiveCodeSection";
 import Contact from "../components/Contact";
+import AlbumsMemories from "../components/AlbumsMemories";
 
 export default function Home() {
   return (
@@ -14,11 +14,12 @@ export default function Home() {
           <a href="/resume" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
             Resume
           </a>
-          <ThemeToggle />
         </div>
       </header>
       <main className="max-w-6xl mx-auto px-6">
         <Hero />
+        {/* Dynamic photo albums with memories mode */}
+        <AlbumsMemories />
         <Skills />
         <Projects />
         <LiveCodeSection />

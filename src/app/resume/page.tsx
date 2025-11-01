@@ -1,6 +1,5 @@
 import Image from "next/image";
 import ImageLightbox from "../../components/ImageLightbox";
-import ThemeToggle from "../../components/ThemeToggle";
 
 // A dedicated Resume page that presents a professional two‑column layout:
 // - Left: photo showcase card (uses Next/Image for high‑quality rendering)
@@ -23,7 +22,6 @@ export default function ResumePage() {
           >
             Home
           </a>
-          <ThemeToggle />
         </div>
       </header>
 
@@ -32,7 +30,7 @@ export default function ResumePage() {
         <h1 className="text-2xl md:text-3xl font-semibold mb-6">Resume</h1>
         <div className="resume-grid grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Photo showcase */}
-          <section aria-label="Photo" className="rounded-xl border bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 shadow-sm overflow-hidden">
+          <section aria-label="Photo" className="glass-card rounded-xl border shadow-sm overflow-hidden">
             <div className="p-4 md:p-6">
               <h2 className="text-lg font-medium mb-3">Profile Photo</h2>
               <p className="text-sm opacity-80 mb-4">
@@ -88,14 +86,14 @@ export default function ResumePage() {
                   href={CV_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm px-3 py-1.5 rounded-md border hover:bg-neutral-50 dark:hover:bg-neutral-800"
+                  className="text-sm px-3 py-1.5 rounded-md border hover:bg-white/10"
                 >
                   Open in new tab
                 </a>
                 <a
                   href={CV_URL}
                   download
-                  className="text-sm px-3 py-1.5 rounded-md bg-black text-white dark:bg-white dark:text-black"
+                  className="text-sm px-3 py-1.5 rounded-md bg-[var(--accent)] text-white"
                 >
                   Download PDF
                 </a>
