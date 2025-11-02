@@ -33,9 +33,30 @@ export default function ResumePage() {
           <section aria-label="Photo" className="glass-card rounded-xl border shadow-sm overflow-hidden">
             <div className="p-4 md:p-6">
               <h2 className="text-lg font-medium mb-3">Profile Photo</h2>
-              <p className="text-sm opacity-80 mb-4">
-                This portrait is used across your portfolio and resume. For best results,
-                provide a high‑resolution image in web/public/photos/ (e.g., profile-1.jpg).
+              <p className="text-sm opacity-80 mb-4 whitespace-pre-line">
+                Full-stack software engineer 
+                with 10+ years of experience 
+                developing scalable web and 
+                mobile applications. 
+                Specialized in modern backend 
+                architectures (Nextjs, 
+                python,node), real-time 
+                systems (WebSocket), and 
+                cross-platform mobile 
+                development (Flutter/Dart). 
+                Proven expertise in building 
+                production-grade HR 
+                management systems, 
+                e-commerce platforms, and 
+                microservices architecture. 
+                Strong focus on code quality, 
+                performance optimization, and 
+                delivering solutions that 
+                comply with local regulatory 
+                requirements. Passionate 
+                about mentoring junior 
+                developers and adopting 
+                emerging technologies.
               </p>
               <figure>
                 <ImageLightbox
