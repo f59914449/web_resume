@@ -8,9 +8,11 @@ type Props = {
   description: string;
   tags: string[];
   image?: string;
+  impact?: string;
+  url?: string;
 };
 
-export default function ProjectCard({ title, description, tags, image = "/window.svg" }: Props) {
+export default function ProjectCard({ title, description, tags, image = "/window.svg", impact, url }: Props) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [8, -8]);
@@ -40,6 +42,11 @@ export default function ProjectCard({ title, description, tags, image = "/window
         <Image src={image} alt="project" width={64} height={64} />
         <h3 className="font-display text-xl font-semibold">{title}</h3>
         <p className="text-sm opacity-80">{description}</p>
+        {impact && (
+          <p className="text-xs font-semibold text-[var(--accent)]">
+            💡 {impact}
+          </p>
+        )}
         <div className="flex flex-wrap gap-2">
           {tags.map((t) => (
             <span key={t} className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/20">
@@ -47,6 +54,14 @@ export default function ProjectCard({ title, description, tags, image = "/window
             </span>
           ))}
         </div>
+        {url && (
+          <a
+            href={url}
+            className="inline-block text-xs text-[var(--accent)] hover:underline mt-2"
+          >
+            Learn more →
+          </a>
+        )}
       </div>
     </motion.div>
   );

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 import ImageLightbox from "../../components/ImageLightbox";
 
 // A dedicated Resume page that presents a professional two‑column layout:
@@ -16,12 +16,12 @@ export default function ResumePage() {
       <header className="flex items-center justify-between px-6 py-4">
         <div className="font-display text-xl font-semibold">Pro PK</div>
         <div className="flex items-center gap-4">
-          <a
+          <Link
             href="/"
             className="text-sm opacity-80 hover:opacity-100 transition-opacity"
           >
             Home
-          </a>
+          </Link>
         </div>
       </header>
 

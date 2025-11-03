@@ -200,7 +200,6 @@ export default function BackgroundAnimation({
     if (prefersReducedMotion && respectReducedMotion) {
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
-      let running = true;
       const setSize = () => {
         const { innerWidth: w, innerHeight: h, devicePixelRatio: dprRaw } = window;
         const dpr = Math.min(1.5, dprRaw || 1);
@@ -222,7 +221,6 @@ export default function BackgroundAnimation({
       draw();
       window.addEventListener("resize", setSize);
       cleanupRef.current = () => {
-        running = false;
         window.removeEventListener("resize", setSize);
       };
       return cleanupRef.current;
@@ -358,9 +356,9 @@ export default function BackgroundAnimation({
       return fallback;
     };
 
-    const baseCol = getCssColor("--background", defaultColors.base as any);
-    const lightCol = getCssColor("--foreground", defaultColors.light as any);
-    const accentCol = getCssColor("--accent", defaultColors.accent as any);
+    const baseCol = getCssColor("--background", defaultColors.base as [number, number, number]);
+    const lightCol = getCssColor("--foreground", defaultColors.light as [number, number, number]);
+    const accentCol = getCssColor("--accent", defaultColors.accent as [number, number, number]);
 
     // Resize handling with DPR capping
     const setSize = () => {
@@ -378,7 +376,7 @@ export default function BackgroundAnimation({
     setSize();
 
     // Animation state
-    let start = performance.now();
+    const start = performance.now();
     let lastReport = start;
     let frameCount = 0;
     let modeA = 0;
@@ -444,7 +442,7 @@ export default function BackgroundAnimation({
     const onResize = () => {
       // Use idle callback to avoid jank on continuous resize
       if ("requestIdleCallback" in window) {
-        (window as any).requestIdleCallback(setSize, { timeout: 300 });
+        window.requestIdleCallback(setSize, { timeout: 300 });
       } else {
         setSize();
       }

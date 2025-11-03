@@ -1,6 +1,6 @@
 "use client";
 
-import Image, { ImageProps } from "next/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 function cn(...classes: Array<string | false | undefined | null>) {

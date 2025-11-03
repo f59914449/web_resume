@@ -23,20 +23,28 @@ export default function Projects() {
       <div className="grid md:grid-cols-3 gap-6">
         {(projects || [
           {
-            title: "HR Management System (static)",
+            title: "HR Management System",
             description:
-              "Full-stack HR with compliance, attendance, payroll.",
-            tags: ["FastAPI", "Flutter", "PostgreSQL"],
+              "Full-stack HR system with Cambodian legal compliance, real-time attendance tracking, and automated payroll processing. Multi-role access with audit logging.",
+            tags: ["FastAPI", "Flutter", "PostgreSQL", "WebSocket"],
+            impact: "Reduced payroll processing time by 80%",
+            url: "#contact",
           },
           {
-            title: "E-commerce Platform (static)",
-            description: "Web + mobile store with payments.",
-            tags: ["Next.js", "React", "MongoDB"],
+            title: "Multi-Platform E-commerce",
+            description:
+              "React/Next.js web + Flutter mobile apps with local banking integration (ABA/Acleda). SEO-optimized with responsive design.",
+            tags: ["Next.js", "React", "MongoDB", "Flutter"],
+            impact: "Handled 50k+ monthly active users",
+            url: "#contact",
           },
           {
-            title: "Real-Time Notifications (static)",
-            description: "WebSocket infra with 10k+ concurrent users.",
-            tags: ["WebSocket", "DragonflyDB"],
+            title: "Real-Time Notification System",
+            description:
+              "WebSocket infrastructure supporting 10,000+ concurrent users with 99.9% uptime. DragonflyDB for session management.",
+            tags: ["WebSocket", "DragonflyDB", "Redis", "Scaling"],
+            impact: "99.9% uptime, 10k+ concurrent users",
+            url: "#contact",
           },
         ]).map((p) => (
           <ProjectCard key={p.title} title={p.title} description={p.description} tags={p.tags} />

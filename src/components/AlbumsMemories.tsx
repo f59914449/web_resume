@@ -34,20 +34,24 @@ export default function AlbumsMemories() {
 
   useEffect(() => {
     let active = true;
-    setLoading(true);
-    fetch("/api/albums")
-      .then((res) => res.json())
-      .then((data: AlbumsResponse) => {
+    async function fetchAlbums() {
+      setLoading(true);
+      try {
+        const res = await fetch("/api/albums");
+        const data: AlbumsResponse = await res.json();
         if (!active) return;
         setPhotos(data.images);
         setSignificant(new Set(data.significant));
         setError(null);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error(err);
+        if (!active) return;
         setError("Unable to load albums");
-      })
-      .finally(() => active && setLoading(false));
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+    void fetchAlbums();
     return () => {
       active = false;
     };
@@ -69,7 +73,8 @@ export default function AlbumsMemories() {
 
   // Reset current index when order changes
   useEffect(() => {
-    setCurrent(0);
+    // Use functional update to avoid cascading effects
+    setCurrent(() => 0);
   }, [sortMode, photos.length]);
 
   // Auto-advance timer
@@ -171,7 +176,7 @@ export default function AlbumsMemories() {
 
       {/* Grid of thumbnails */}
       <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        {orderedPhotos.map((p, idx) => (
+        {orderedPhotos.map((p) => (
           <div key={p.filename} className="relative aspect-[4/3] rounded-lg overflow-hidden group">
             <Image src={p.url} alt={p.caption ?? p.filename} fill sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 25vw" className="object-cover transition-transform duration-300 group-hover:scale-105" />
             {significant.has(p.filename) && (

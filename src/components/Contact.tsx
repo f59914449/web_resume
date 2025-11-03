@@ -30,7 +30,7 @@ export default function Contact() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       alert("Message sent! Thank you.");
       reset();
-    } catch (e) {
+    } catch {
       alert("Failed to send message");
     }
   }
